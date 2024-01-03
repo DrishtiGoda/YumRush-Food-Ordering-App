@@ -11,9 +11,11 @@
     "process": "^0.11.10"
   },
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ],
   "author": "Drishti Goda",

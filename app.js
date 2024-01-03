@@ -1,22 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h1", {}, "I am h1 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h1", {}, "I am h1 tag"),
-  ]),
-]);
+// React Element
+const title = <h1>Title</h1>;
 
-console.log(parent);
+//React Component
+const Heading = () => {
+  return (
+    <div>
+      <h1>Heading</h1>
+    </div>
+  );
+};
+
+// React Component
+const Component = () => {
+  return (
+    <div>
+      <h1> Use of React Component & React Element </h1>
+      {title}
+      {Heading()}
+      <Heading />
+      <Heading></Heading>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
-
-// above code is very messy
-// To solve this problem , we have => JSX
+root.render(<Component />);
