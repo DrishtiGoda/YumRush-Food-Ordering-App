@@ -1,8 +1,26 @@
+body {
+  background-color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.logo-container {
+  display: flex;
+  /* background: rgb(245,131,58); */
+}
+
+.app-name {
+  color: linear-gradient(
+    90deg,
+    rgba(245, 131, 58, 1) 0%,
+    rgba(238, 59, 101, 1) 80%
+  );
 }
 
 .logo {
@@ -18,19 +36,32 @@
 .nav-items > ul > li {
   padding: 10px;
   margin: 10px;
+  font-weight: 700;
+}
+
+.login-btn {
+  cursor: pointer;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
 }
 
 .res-card {
-  width: 200px;
-  height: 350px;
-  margin: 10px;
-  padding: 5px;
-  background-color: #dbd1d1;
+  width: 280px;
+  margin: 20px 25px 20px 25px;
+  background-color: #f5e3e3;
+  border-radius: 10px;
 }
 
 .res-card:hover {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  -webkit-box-shadow: 2px -1px 11px 5px rgba(194, 194, 194, 1);
+  -moz-box-shadow: 2px -1px 11px 5px rgba(194, 194, 194, 1);
+  box-shadow: 2px -1px 11px 5px rgba(194, 194, 194, 1);
   cursor: pointer;
+  width: 282px;
 }
 
 .search {
@@ -39,14 +70,80 @@
 
 .res-img {
   width: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.res-content {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.name {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 18px;
+}
+
+.cuisines,
+.cost,
+.rating {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  color: rgb(109, 108, 108);
+}
+.cost {
+  color: green;
+}
+
+.price-rating {
+  display: flex;
+  justify-content: space-between;
 }
 
 .res-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  /* background-color: red; */
 }
 
-.filter-btn{
+.filter-btn {
   margin: 10px;
   cursor: pointer;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* background-color: red; */
+}
+
+/* .shimmer-card {
+  background-color: #d6d9d8;
+  width: 280px;
+  height: 350px;
+  margin: 20px 25px 20px 25px;
+  border-radius: 10px;
+} */
+
+.shimmer-card {
+  width: 280px;
+  height: 380px;
+  color: grey;
+  background-color: #e4e9e7;
+  margin: 50px 25px 5px 25px;
+  border-radius: 10px;
+  -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%)
+    right/300%100%;
+  mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/300%100%;
+  background-repeat: no-repeat;
+  animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    -webkit-mask-position: left;
+  }
 }
