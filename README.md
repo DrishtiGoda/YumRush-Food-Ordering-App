@@ -21,3 +21,7 @@
 # React Hooks
 - useState()
 - useEffect()
+
+# Types of Routing 
+- Client side routing
+- Server side routing
