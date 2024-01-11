@@ -35,7 +35,7 @@ const Body = () => {
     console.log(jsonData);
     // Optional Chaining
     const restaurantListData =
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     console.log("restaurant inside use useEffect", restaurantList);
     setrestaurantList(restaurantListData);
@@ -48,7 +48,7 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
-        <div>
+      <div>
           <button
             className="filter-btn"
             onClick={() => {

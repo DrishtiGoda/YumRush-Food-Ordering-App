@@ -147,3 +147,15 @@ body {
     -webkit-mask-position: left;
   }
 }
+
+.user-card {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/* About.js */
+
+.avatar {
+  border-radius: 500px;
+  border: 2px solid black;
+}
