@@ -1,8 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
-// import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useAllRestaurants from "../utils/useAllRestaurants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 function searchRestaurant(searchText, restaurantList) {
   const filterByName = restaurantList.filter((res) =>
@@ -19,44 +20,39 @@ function toRatedRestaurants(restaurantList) {
 }
 
 const Body = () => {
-  const [restaurantList, setrestaurantList] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const { restaurantList, filteredRestaurant, updateFilteredRestaurant } =
+    useAllRestaurants();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await data.json();
-    console.log(jsonData);
-    // Optional Chaining
-    const restaurantListData =
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log("restaurant inside use useEffect", restaurantList);
-    setrestaurantList(restaurantListData);
-    console.log("dcbhbdc", restaurantListData);
-    setFilteredRestaurant(restaurantListData);
+  const handleSearch = () => {
+    const searchByName = searchRestaurant(searchText, restaurantList);
+    updateFilteredRestaurant(searchByName);
   };
+
+  const handleFilter = () => {
+    const filteredList = toRatedRestaurants(restaurantList);
+    updateFilteredRestaurant(filteredList);
+  };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <div className="status">
+        <h1>
+          Looks like you are Offline!🙁 Please check your internet connection.
+        </h1>
+      </div>
+    );
+  }
 
   return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter">
-      <div>
-          <button
-            className="filter-btn"
-            onClick={() => {
-              const filteredList = toRatedRestaurants(restaurantList);
-              console.log(filteredList);
-              setFilteredRestaurant(filteredList);
-            }}
-          >
+        <div>
+          <button className="filter-btn" onClick={handleFilter}>
             Top Rated Restaurants
           </button>
         </div>
@@ -69,20 +65,13 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button
-            className="search-btn"
-            onClick={() => {
-              // filter restaurat cards and update UI
-              const searchByName = searchRestaurant(searchText, restaurantList);
-              setFilteredRestaurant(searchByName);
-            }}
-          >
+          <button className="search-btn" onClick={handleSearch}>
             Search
           </button>
         </div>
       </div>
       <div className="res-container">
-        {filteredRestaurant.map((restaurant) => (
+        {filteredRestaurant?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}

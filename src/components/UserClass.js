@@ -15,7 +15,7 @@ class UserClass extends React.Component {
 
     console.log("child constructor called");
   }
-
+ 
   async componentDidMount() {
     console.log("child component did mount called");
     const data = await fetch("https://api.github.com/users/drishtigoda");
@@ -47,6 +47,7 @@ class UserClass extends React.Component {
         <h3> Name: {name}</h3>
         <h3>Location: {location}</h3>
         <h3>Company: {company}</h3>
+        <h3>Contact: dgoda85@gmail.com</h3>
       </div>
     );
   }

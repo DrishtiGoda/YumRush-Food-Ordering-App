@@ -159,3 +159,17 @@ body {
   border-radius: 500px;
   border: 2px solid black;
 }
+
+.status {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status-online {
+  color: green;
+}
+
+.status-offline {
+  color: red;
+}
