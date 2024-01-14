@@ -8,30 +8,30 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={logo} alt="logo" />
-        <h1 className="app-name">YumRush</h1>
+    <div className="flex justify-between items-center">
+      <div className="flex">
+        <img className="w-32" src={logo} alt="logo" />
+        <h1>YumRush</h1>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex">
+        <ul className="flex list-none px-20 font-bold">
+          <li className="px-5">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-5">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-5">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-5">
             <Link to="/grocery">Grocery </Link>
           </li>
-          <li>Cart</li>
+          <li className="px-5">Cart</li>
           {onlineStatus ? (
-            <li className="status-online">Online</li>
+            <li className="text-green-700 px-5">Online</li>
           ) : (
-            <li className="status-offline">Offline</li>
+            <li className="text-red-700 px-5">Offline</li>
           )}
           <button
             className="login-btn"

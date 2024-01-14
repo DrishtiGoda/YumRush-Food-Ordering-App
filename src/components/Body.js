@@ -49,28 +49,31 @@ const Body = () => {
   return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="font-sans">
+      <div className="flex items-center">
         <div>
-          <button className="filter-btn" onClick={handleFilter}>
+          <button className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white cursor-pointer" onClick={handleFilter}>
             Top Rated Restaurants
           </button>
         </div>
-        <div className="search">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black p-2 "
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="search-btn" onClick={handleSearch}>
+          <button
+            className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurant?.map((restaurant) => (
           <Link
             key={restaurant.info.id}

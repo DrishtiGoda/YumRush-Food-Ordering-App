@@ -14,7 +14,8 @@ const useAllRestaurants = () => {
     const jsonData = await data.json();
     console.log(jsonData);
     const restaurantListData =
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(restaurantListData);
     setFilteredRestaurant(restaurantListData);
@@ -24,7 +25,7 @@ const useAllRestaurants = () => {
   const updateFilteredRestaurant = (filteredData) => {
     setFilteredRestaurant(filteredData);
   };
-
+ 
   return { restaurantList, filteredRestaurant, updateFilteredRestaurant };
 };
 
