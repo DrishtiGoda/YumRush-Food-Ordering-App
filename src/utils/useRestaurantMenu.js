@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MENU_API_URL } from "./constants";
+import { json } from "react-router-dom";
 
 // CUSTOM HOOK
 const useRestaurantMenu = (resId) => {
@@ -17,6 +18,7 @@ const useRestaurantMenu = (resId) => {
     const jsonData = await data.json();
 
     setRestaurantMenu(jsonData);
+    console.log("res menu", jsonData);
   };
 
   return restaurantMenu;

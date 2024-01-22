@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -23,6 +23,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const { restaurantList, filteredRestaurant, updateFilteredRestaurant } =
     useAllRestaurants();
+  const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
 
   const handleSearch = () => {
     const searchByName = searchRestaurant(searchText, restaurantList);
@@ -49,10 +50,14 @@ const Body = () => {
   return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="font-sans">
+    <div className="font-sans mx-10">
+      <h1 className="pl-10 pt-5 text-xl font-semibold">Drishti, what's on your mind?</h1>
       <div className="flex items-center">
         <div>
-          <button className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white cursor-pointer" onClick={handleFilter}>
+          <button
+            className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white cursor-pointer"
+            onClick={handleFilter}
+          >
             Top Rated Restaurants
           </button>
         </div>
@@ -80,7 +85,12 @@ const Body = () => {
             to={"/restaurants/" + restaurant.info.id}
             style={{ textDecoration: "none" }}
           >
-            <RestaurantCard data={restaurant} />
+            {/* if restaurant is promoted then add a promoted label to it */}
+            {restaurant.info.isOpen ? (
+              <RestaurantCardPromoted data={restaurant} />
+            ) : (
+              <RestaurantCard data={restaurant} />
+            )}
           </Link>
         ))}
       </div>

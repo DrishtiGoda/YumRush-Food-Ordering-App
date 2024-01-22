@@ -14,9 +14,10 @@ const useAllRestaurants = () => {
     const jsonData = await data.json();
     console.log(jsonData);
     const restaurantListData =
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants 
+        // || jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        // ?.restaurants;
     setRestaurantList(restaurantListData);
     setFilteredRestaurant(restaurantListData);
     console.log("custom hook rest list data", restaurantListData);

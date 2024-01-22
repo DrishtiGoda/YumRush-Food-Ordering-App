@@ -3,37 +3,51 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const restaurantMenu = useRestaurantMenu(resId);
 
+  const [showIndex, setShowIndex] = useState(null);
+
   if (restaurantMenu == null) {
     return <Shimmer />;
   }
-  const { name, cuisines, costForTwoMessage } =
+  const { name, cuisines, costForTwoMessage, areaName } =
     restaurantMenu?.data?.cards[0]?.card?.card?.info;
-  const { itemCards } =
+  const itemCards =
     restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
       ?.card?.card;
-  console.log(itemCards);
+
+  console.log("item cards", itemCards);
+
+  const categories =
+    restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+  console.log("categories", categories);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
-        {cuisines.join(",")} - {costForTwoMessage}
-      </p>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards?.map((item, index) => (
-          <li key={index}>
-            {item.card.info.name} {"Rs-"}
-            {item.card.info.defaultPrice / 100 || item.card.info.price / 100}
-          </li>
-        ))}
-      </ul>
+    <div className="mx-[400]">
+      <h1 className="font-bold mt-10 ">{name}</h1>
+      <p className="text-gray-500">{cuisines.join(", ")}</p>
+      <p className="text-gray-500">{areaName}</p>
+      {/* <p className="font-bold text-lg">
+        {cuisines.join(", ")} - {costForTwoMessage}
+      </p> */}
+      {/* categories accordian */}
+      {categories?.map((category, index) => (
+        <RestaurantCategory
+          key={index}
+          data={category?.card?.card}
+          showItems={index == showIndex}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+        />
+      ))}
     </div>
   );
 };
