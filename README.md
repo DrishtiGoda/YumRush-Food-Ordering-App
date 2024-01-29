@@ -25,3 +25,12 @@
 # Types of Routing 
 - Client side routing
 - Server side routing
+
+
+# Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build out store
+- Connect our store to our app
+- Create a cart slice
+- Dispatch (action)
+- Selector
