@@ -1,6 +1,19 @@
-# React
+# YumRush - Food Ordering App usind ReactJS
 
-# Parcel
+![image](https://github.com/DrishtiGoda/React/assets/91425083/76b1434d-5dbc-4a38-9ab4-7909941a4d1b)
+
+## Installation 🚀
+- Clone the repository
+```shell
+ git clone https://github.com/DrishtiGoda/React.git
+```
+```shell
+  #for npm users
+  > npm install
+  > npm run start OR npm start
+```
+
+## Parcel
 - Dev Build
 - Local Server
 - HMR = Hot Module replacement
@@ -18,16 +31,15 @@
 - HTTPS
 - Tree Shaking 
 
-# React Hooks
+## React Hooks
 - useState()
 - useEffect()
 
-# Types of Routing 
+## Types of Routing 
 - Client side routing
 - Server side routing
 
-
-# Redux Toolkit
+## Redux Toolkit
 - Install @reduxjs/toolkit and react-redux
 - Build out store
 - Connect our store to our app
@@ -35,13 +47,12 @@
 - Dispatch (action)
 - Selector
 
-
-# Types of Testing (developer)
+## Types of Testing (developer)
 - Unit testing
 - Integration testing
 - End to End testing - e2e testing
 
-# Setting up Testing in our app
+## Setting up Testing in our app
 - Install React testing Library
 - Installed jest
 - Installed Babel dependencies
