@@ -41,7 +41,7 @@
 - Integration testing
 - End to End testing - e2e testing
 
-# Setting up TEsting in our app
+# Setting up Testing in our app
 - Install React testing Library
 - Installed jest
 - Installed Babel dependencies

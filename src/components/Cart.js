@@ -27,12 +27,13 @@ const Cart = () => {
             <Lottie animationData={cookingAnimation} loop={true} />
             <h1 className="text-xl text-center"> Your Cart is Empty! </h1>
             <h3 className="text-slate-400">
-              You can got to the home page to view more restaurants
+              {/* You can got to the home page to view more restaurants */}
             </h3>
           </div>
         ) : (
           <div className="mt-5 flex items-start justify-between">
             <button
+            data-testid="clearButton"
               className="bg-red-400 p-2 rounded text-white"
               onClick={handleClearCart}
             >
