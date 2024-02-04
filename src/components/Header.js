@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import logo from "../../images/logo.png";
+// import Logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center shadow-lg">
       <div className="flex">
-        <img className="w-32" src={logo} alt="logo" />
+        {/* <img className="w-32" data-testid="logo" src={Logo} alt="logo" /> */}
         <h1 className="flex items-center justify-center text-2xl font-bold">
           YumRush
         </h1>
@@ -31,7 +31,7 @@ const Header = () => {
           <li className="px-5">
             <Link to="/about">About Us</Link>
           </li>
-          <li className="px-5">
+          <li className="px-5"> 
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="px-5">
@@ -46,6 +46,7 @@ const Header = () => {
             <li className="text-red-700 px-5">Offline</li>
           )}
           <button
+          data-testid = "button"
             className="login-btn"
             onClick={() => {
               buttonName == "Login"

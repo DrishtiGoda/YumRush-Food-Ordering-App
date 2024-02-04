@@ -16,7 +16,7 @@ const RestaurantMenu = () => {
     return <Shimmer />;
   }
   const { name, cuisines, costForTwoMessage, areaName } =
-    restaurantMenu?.data?.cards[0]?.card?.card?.info;
+    restaurantMenu?.data?.cards[0]?.card?.card?.info || {};
   const itemCards =
     restaurantMenu?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
       ?.card?.card;
@@ -32,9 +32,9 @@ const RestaurantMenu = () => {
   console.log("categories", categories);
 
   return (
-    <div className="mx-[400]">
+    <div data-testid="resCard" className="mx-[400]">
       <h1 className="font-bold mt-10 ">{name}</h1>
-      <p className="text-gray-500">{cuisines.join(", ")}</p>
+      <p className="text-gray-500">{cuisines ? cuisines.join(", ") : "No cuisines available"}</p>
       <p className="text-gray-500">{areaName}</p>
       {/* <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
