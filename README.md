@@ -1,4 +1,4 @@
-# YumRush - Food Ordering App usind ReactJS
+# YumRush - Food Ordering App using ReactJS
 
 ![image](https://github.com/DrishtiGoda/React/assets/91425083/76b1434d-5dbc-4a38-9ab4-7909941a4d1b)
 
