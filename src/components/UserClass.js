@@ -13,11 +13,11 @@ class UserClass extends React.Component {
       },
     };
 
-    console.log("child constructor called");
+    // console.log("child constructor called");
   }
  
   async componentDidMount() {
-    console.log("child component did mount called");
+    // console.log("child component did mount called");
     const data = await fetch("https://api.github.com/users/drishtigoda");
     const jsonData = await data.json();
 
@@ -29,15 +29,15 @@ class UserClass extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("child component did update called");
+    // console.log("child component did update called");
   }
 
   componentWillUnmount() {
-    console.log("child component will unmount called");
+    // console.log("child component will unmount called");
   }
 
   render() {
-    console.log("child render called");
+    // console.log("child render called");
 
     const { name, location, company, avatar_url } = this.state.userInfo;
 

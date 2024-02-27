@@ -59,14 +59,14 @@ const appRouter = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
-      {
-        path: "/grocery",
-        element: (
-          <Suspense fallback={<Shimmer />}>
-            <Grocery />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "/grocery",
+      //   element: (
+      //     <Suspense fallback={<Shimmer />}>
+      //       <Grocery />
+      //     </Suspense>
+      //   ),
+      // },
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,

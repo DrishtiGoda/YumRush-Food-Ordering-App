@@ -19,7 +19,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
           </button>
           <span> {showItems ? " ⋀" : " ⋁"  } </span>
         </div>
-        {showItems && <CategoryList list={data.itemCards} />}
+        {showItems && <CategoryList list={data.itemCards} path="resCategory"  />}
       </div>
     </div>
   );

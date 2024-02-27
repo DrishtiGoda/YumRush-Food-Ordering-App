@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useAllRestaurants from "../utils/useAllRestaurants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Cuisines from "./Cuisines";
+import Footer from "./Footer";
 
 function searchRestaurant(searchText, restaurantList) {
   const filterByName = restaurantList.filter((res) =>
@@ -21,8 +23,7 @@ function toRatedRestaurants(restaurantList) {
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const { restaurantList, filteredRestaurant, updateFilteredRestaurant } =
-    useAllRestaurants();
+  const { restaurantList, filteredRestaurant, updateFilteredRestaurant, cuisineList} = useAllRestaurants();
   const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard);
 
   const handleSearch = () => {
@@ -50,32 +51,46 @@ const Body = () => {
   return restaurantList?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="font-sans mx-10">
-      <h1 className="pl-10 pt-5 text-xl font-semibold">Drishti, what's on your mind?</h1>
-      <div className="flex items-center">
-        <div>
-          <button
-            className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white cursor-pointer"
-            onClick={handleFilter}
-          >
-            Top Rated Restaurants
-          </button>
-        </div>
-        <div className="m-4 p-4">
+    <div>
+
+  
+    <div className="mx-10">
+      <h1 className="pl-10 pt-5 text-2xl font-semibold mx-[100px]">
+        Drishti, what's on your mind?
+      </h1>
+      <div className="py-2 border-2 border-solid border-white overflow-x-auto no-scrollbar whitespace-nowrap mx-[100px]">
+        {cuisineList?.map((cuisine) => (
+          <Cuisines data={cuisine} key={cuisine.id} />
+        ))}
+      </div>
+      <hr className="container mx-auto" />
+      <h1 className="pl-10 pt-5 text-2xl font-semibold mx-[100px]">
+        Restaurants with online food delivery
+      </h1>
+      <div className="flex items-center justify-between mx-[100px] py-4">
+      <div className="ml-[30px]">
           <input
             type="text"
             data-testid="searchInput"
-            className="border border-solid border-black p-2 "
+            className="border border-solid border-gray-400 rounded-3xl px-2 py-1 "
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="px-4 py-2 rounded-sm m-4 bg-gradient-to-r from-orange to-pink text-white"
+            className="px-3 py-1 ml-2 rounded-3xl shadow-sm border cursor-pointer"
             onClick={handleSearch}
           >
             Search
+          </button>
+        </div>
+        <div className="mr-[30px]">
+          <button
+            className="px-3 py-1 rounded-3xl shadow-sm border cursor-pointer"
+            onClick={handleFilter}
+          >
+            Top Rated Restaurants
           </button>
         </div>
       </div>
@@ -95,6 +110,8 @@ const Body = () => {
           </Link>
         ))}
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };
